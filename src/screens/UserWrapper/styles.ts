@@ -1,26 +1,24 @@
 import styled from "styled-components/native";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { alignRow } from "../../global/styles/theme";
 
 export const Container = styled.View`
-    flex: 1;
-    background-color: ${({ theme }) => theme.colors.background};
+    background-color: ${({ theme }) => theme.colors.primary};
+    align-items: flex-start;
+    height: ${RFPercentage(38)}px;
 `;
 
 export const Header = styled.View`
-    height: ${RFPercentage(42)}px;
     width: 100%;
-    background-color: ${({ theme }) => theme.colors.primary};
     padding: ${({ theme }) => RFValue(theme.common.padding)}px;
-
-    flex-direction: row;
+    margin-top: ${({ theme }) => RFValue(theme.common.padding * 2)}px;
     justify-content: space-between;
-    align-items: center;
+    ${alignRow}
 `;
 
 export const ProfileContainer = styled.View`
     flex-direction: row;
-    align-items: center;
 `;
 
 export const Photo = styled.Image`
@@ -45,6 +43,6 @@ export const UserName = styled.Text`
 `;
 
 export const Icon = styled(Ionicons)`
-    color: ${({ theme }) => theme.colors.shape};
+    color: ${({ theme }) => theme.colors.secondary};
     font-size: ${({ theme }) => RFValue(theme.fonts.icon)}px;
 `;

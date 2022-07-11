@@ -1,3 +1,5 @@
+import { css } from "styled-components";
+
 export const theme = {
     colors: {
         primary: "#5636D3",
@@ -13,6 +15,7 @@ export const theme = {
         shape: "#fff",
         title: "#363F5F",
         text: "#969CB2",
+        text_dark: "#000",
         background: "#F0F2F5",
     },
     fonts: {
@@ -32,6 +35,28 @@ export const theme = {
         gap: 10,
         logo: 50,
         radius: 10,
+        radius_secondary: 5,
         icon: 20,
     },
 };
+
+export const alignRow = css`
+    flex-direction: row;
+    align-items: center;
+`;
+
+export const justifyRow = css`
+    flex-direction: row;
+    align-items: center;
+`;
+
+export const centerRow = css`
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+`;
+
+export const centerColumn = css`
+    align-items: center;
+    justify-content: center;
+`;

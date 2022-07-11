@@ -10,7 +10,7 @@ import {
     WelcomeContainer,
 } from "./styles";
 
-export default function Dashboard() {
+export default function UserWrapper() {
     return (
         <Container>
             <Header>
