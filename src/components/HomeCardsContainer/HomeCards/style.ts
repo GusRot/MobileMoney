@@ -1,16 +1,16 @@
 import styled, { css } from "styled-components/native";
 import { RFValue, RFPercentage } from "react-native-responsive-fontsize";
 import { Feather } from "@expo/vector-icons";
-import { alignRow } from "../../../global/styles/theme";
+import { alignRow, padding } from "../../../global/styles/theme";
 
 interface Typeprops {
     type: "up" | "down" | "total";
 }
 
 export const Container = styled.View<Typeprops>`
+    ${padding}
     width: ${RFPercentage(40)}px;
     background-color: ${({ theme }) => theme.colors.shape};
-    padding: ${({ theme }) => RFValue(theme.common.padding)}px;
     border-radius: ${({ theme }) => RFValue(theme.common.radius_secondary)}px;
     margin-right: ${({ theme }) => RFValue(theme.common.gap)}px;
 

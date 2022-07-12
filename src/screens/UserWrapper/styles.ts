@@ -1,17 +1,17 @@
 import styled from "styled-components/native";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { alignRow } from "../../global/styles/theme";
+import { alignRow, padding } from "../../global/styles/theme";
 
 export const Container = styled.View`
     background-color: ${({ theme }) => theme.colors.primary};
     align-items: flex-start;
-    height: ${RFPercentage(38)}px;
+    height: ${RFPercentage(42)}px;
 `;
 
 export const Header = styled.View`
+    ${padding}
     width: 100%;
-    padding: ${({ theme }) => RFValue(theme.common.padding)}px;
     margin-top: ${({ theme }) => RFValue(theme.common.padding * 2)}px;
     justify-content: space-between;
     ${alignRow}

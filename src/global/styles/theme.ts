@@ -1,4 +1,5 @@
-import { css } from "styled-components";
+import { RFValue } from "react-native-responsive-fontsize";
+import styled, { css } from "styled-components/native";
 
 export const theme = {
     colors: {
@@ -25,6 +26,7 @@ export const theme = {
         icon: 24,
         title: 30,
         dashboard: 32,
+        amount: 20,
 
         regular: "Poppins_400Regular",
         medium: "Poppins_500Medium",
@@ -59,4 +61,14 @@ export const centerRow = css`
 export const centerColumn = css`
     align-items: center;
     justify-content: center;
+`;
+
+export const padding = css`
+    padding: ${({ theme }) => RFValue(theme.common.padding)}px;
+`;
+
+export const MainWrapper = styled.View`
+    ${padding}
+    background-color: ${({ theme }) => theme.colors.background};
+    flex: 1;
 `;
