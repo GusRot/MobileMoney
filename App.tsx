@@ -11,6 +11,8 @@ import {
 } from "@expo-google-fonts/poppins";
 import HomeCardsContainer from "./src/components/HomeCardsContainer";
 import Dashboard from "./src/screens/Dashboard";
+import Register from "./src/screens/Register";
+import Header from "./src/components/Header";
 
 export default function App() {
     let [fontsLoaded] = useFonts({
@@ -24,11 +26,13 @@ export default function App() {
     }
     return (
         <ThemeProvider theme={theme}>
-            <UserWrapper />
-            <HomeCardsContainer />
+            {/* <UserWrapper /> */}
+            {/* <HomeCardsContainer />
             <MainWrapper>
                 <Dashboard />
-            </MainWrapper>
+            </MainWrapper> */}
+            <Header />
+            <Register />
         </ThemeProvider>
     );
 }

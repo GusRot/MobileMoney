@@ -28,9 +28,11 @@ export const theme = {
         dashboard: 32,
         amount: 20,
 
-        regular: "Poppins_400Regular",
-        medium: "Poppins_500Medium",
-        bold: "Poppins_700Bold",
+        family: {
+            regular: "Poppins_400Regular",
+            medium: "Poppins_500Medium",
+            bold: "Poppins_700Bold",
+        }
     },
     common: {
         padding: 20,

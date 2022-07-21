@@ -16,6 +16,7 @@ export const Container = styled.View`
 
 export const Title = styled.Text`
     letter-spacing: 0.5px;
+    font-family: ${({ theme }) => theme.fonts.family.regular};
 `;
 
 export const Amount = styled.Text<AmountProps>`

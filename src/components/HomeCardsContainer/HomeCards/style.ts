@@ -18,6 +18,7 @@ export const Container = styled.View<Typeprops>`
         type === "total"
             ? `background-color: ${theme.colors.secondary};`
             : `background-color: ${theme.colors.shape};`};
+
 `;
 
 export const CardHeader = styled.View`
@@ -27,6 +28,7 @@ export const CardHeader = styled.View`
 
 export const CardTitle = styled.Text<Typeprops>`
     text-transform: uppercase;
+    font-family: ${({ theme }) => theme.fonts.family.regular};
     ${({ type, theme }) =>
         type === "total"
             ? `color: ${theme.colors.shape};`

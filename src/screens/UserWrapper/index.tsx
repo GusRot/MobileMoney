@@ -22,7 +22,7 @@ export default function UserWrapper() {
                     />
                     <WelcomeContainer>
                         <UserWelcome>Olá,</UserWelcome>
-                        <UserName>Nome</UserName>
+                        <UserName>Gustavo</UserName>
                     </WelcomeContainer>
                 </ProfileContainer>
                 <Icon name="power" />
