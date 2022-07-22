@@ -1,10 +1,14 @@
 import react from "react";
 import { Container, Title } from "./style";
 
-export default function Header() {
+interface HeaderProps {
+    title: string;
+}
+
+export default function Header({ title }: HeaderProps) {
     return (
         <Container>
-            <Title>Cadastro</Title>
+            <Title>{title}</Title>
         </Container>
     );
 }

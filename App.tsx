@@ -12,7 +12,6 @@ import {
 import HomeCardsContainer from "./src/components/HomeCardsContainer";
 import Dashboard from "./src/screens/Dashboard";
 import Register from "./src/screens/Register";
-import Header from "./src/components/Header";
 
 export default function App() {
     let [fontsLoaded] = useFonts({
@@ -31,7 +30,6 @@ export default function App() {
             <MainWrapper>
                 <Dashboard />
             </MainWrapper> */}
-            <Header />
             <Register />
         </ThemeProvider>
     );

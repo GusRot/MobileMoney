@@ -44,12 +44,13 @@ export const ButtonContainer = styled(TouchableOpacity)<Selectedprops>`
 
 export const ButtonIcon = styled(Feather)<Typeprops>`
     font-size: ${({ theme }) => RFValue(theme.fonts.icon)}px;
-    margin-right: ${({ theme }) => RFValue(theme.common.padding / 2)}px
-        ${({ type }) =>
-            type === "up" &&
-            css`
-                color: ${({ theme }) => theme.colors.success};
-            `};
+    margin-right: ${({ theme }) => RFValue(theme.common.padding / 2)}px;
+    margin-top: ${RFValue(-4)}px;
+    ${({ type }) =>
+        type === "up" &&
+        css`
+            color: ${({ theme }) => theme.colors.success};
+        `};
 
     ${({ type }) =>
         type === "down" &&
