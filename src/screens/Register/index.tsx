@@ -1,5 +1,5 @@
 import react, { useState } from "react";
-import { Modal } from "react-native";
+import { Modal, TouchableWithoutFeedback, Keyboard, Alert } from "react-native";
 import Button from "../../components/Form/Button";
 import Input from "../../components/Form/Input";
 import TransactionTypeButton from "../../components/Form/TransactionTypeButton";
@@ -17,6 +17,8 @@ export default function Register() {
     const [iconType, setIconType] = useState<"up" | "down" | "">("");
     const [modal, setModal] = useState(false);
     const [itemActive, setItemActive] = useState("");
+    const [nameInput, setNameInput] = useState("");
+    const [amountInput, setAmountInput] = useState("");
 
     function handleCategoryActive(category: string) {
         if (itemActive === category) {
@@ -37,40 +39,70 @@ export default function Register() {
         }
         setIconType(type);
     }
+
+    function handleRegister() {
+        if (!iconType) {
+            Alert.alert("Seleciona o tipo de transação");
+            return;
+        }
+
+        if (!itemActive) {
+            Alert.alert("Selecione uma categoria");
+            return;
+        }
+
+        console.log({
+            iconType,
+            itemActive,
+            nameInput,
+            amountInput,
+        });
+    }
     return (
         <>
             <Header title="Forms" />
-            <Container>
-                <Forms>
-                    <FieldsContainer>
-                        <Input placeholder="Nome" />
-                        <Input placeholder="Preço" />
-                        <TypeButtonContainer>
-                            <TransactionTypeButton
-                                title="Income"
-                                type="up"
-                                iconType={iconType}
-                                onPress={() => handleTypeButton("up")}
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <Container>
+                    <Forms>
+                        <FieldsContainer>
+                            <Input
+                                placeholder="Nome"
+                                autoCapitalize="sentences"
+                                autoCorrect={false}
+                                onChangeText={setNameInput}
                             />
-                            <TransactionTypeButton
-                                title="teste"
-                                type="down"
-                                iconType={iconType}
-                                onPress={() => handleTypeButton("down")}
+                            <Input
+                                placeholder="Preço"
+                                keyboardType="numeric"
+                                onChangeText={setAmountInput}
                             />
-                        </TypeButtonContainer>
-                        <CategorySelectButton
-                            title={
-                                itemActive
-                                    ? itemActive
-                                    : "Escolha uma Categoria"
-                            }
-                            onPress={handleModalOpen}
-                        />
-                    </FieldsContainer>
-                    <Button title="Enviar" />
-                </Forms>
-            </Container>
+                            <TypeButtonContainer>
+                                <TransactionTypeButton
+                                    title="Income"
+                                    type="up"
+                                    iconType={iconType}
+                                    onPress={() => handleTypeButton("up")}
+                                />
+                                <TransactionTypeButton
+                                    title="Outcome"
+                                    type="down"
+                                    iconType={iconType}
+                                    onPress={() => handleTypeButton("down")}
+                                />
+                            </TypeButtonContainer>
+                            <CategorySelectButton
+                                title={
+                                    itemActive
+                                        ? itemActive
+                                        : "Escolha uma Categoria"
+                                }
+                                onPress={handleModalOpen}
+                            />
+                        </FieldsContainer>
+                        <Button title="Enviar" onPress={handleRegister} />
+                    </Forms>
+                </Container>
+            </TouchableWithoutFeedback>
 
             <Modal visible={modal}>
                 <CategorySelect

@@ -22,7 +22,7 @@ export default function TransactionTypeButton({
     return (
         <ButtonContainer {...all} type={iconType} selected={iconType === type}>
             <ButtonIcon name={Icons[type]} type={type} />
-            <Title>teste</Title>
+            <Title>{title}</Title>
         </ButtonContainer>
     );
 }
