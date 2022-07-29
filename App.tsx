@@ -1,17 +1,14 @@
 import React from "react";
 import AppLoading from "expo-app-loading";
 import { ThemeProvider } from "styled-components";
-import UserWrapper from "./src/screens/UserWrapper";
-import { MainWrapper, theme } from "./src/global/styles/theme";
+import { theme } from "./src/global/styles/theme";
 import {
     useFonts,
     Poppins_400Regular,
     Poppins_500Medium,
     Poppins_700Bold,
 } from "@expo-google-fonts/poppins";
-import HomeCardsContainer from "./src/components/HomeCardsContainer";
-import Dashboard from "./src/screens/Dashboard";
-import Register from "./src/screens/Register";
+import { AppRoutes } from "./src/routes/app.routes";
 
 export default function App() {
     let [fontsLoaded] = useFonts({
@@ -25,12 +22,7 @@ export default function App() {
     }
     return (
         <ThemeProvider theme={theme}>
-            {/* <UserWrapper /> */}
-            {/* <HomeCardsContainer />
-            <MainWrapper>
-                <Dashboard />
-            </MainWrapper> */}
-            <Register />
+            <AppRoutes />
         </ThemeProvider>
     );
 }

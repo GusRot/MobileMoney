@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 import { RFValue } from "react-native-responsive-fontsize";
 import { Feather } from "@expo/vector-icons";
-import { alignRow, padding } from "../../../global/styles/theme";
+import { alignRow, padding } from "../../../../global/styles/theme";
 
 interface AmountProps {
     color: "income" | "outcome";
