@@ -1,7 +1,4 @@
-import {
-    FlatList,
-    FlatListProps
-} from "react-native";
+import { FlatList, FlatListProps } from "react-native";
 import styled from "styled-components/native";
 import { CategoriesProps } from "../../components/utils/categories";
 import { RFValue } from "react-native-responsive-fontsize";
@@ -9,6 +6,11 @@ import { RFValue } from "react-native-responsive-fontsize";
 export const Container = styled.View`
     flex: 1;
     background-color: ${({ theme }) => theme.colors.shape};
+`;
+
+export const CategorySelectContainer = styled.View`
+    justify-content: space-between;
+    flex: 1;
 `;
 
 export const CategoriesList = styled(
@@ -19,11 +21,6 @@ export const CategoriesList = styled(
     showsVerticalScrollIndicator: false,
 })`
     padding: ${({ theme }) => RFValue(theme.common.padding - 5)}px 0;
-`;
-
-export const CategorySelectContainer = styled.View`
-    justify-content: space-between;
-    flex: 1;
 `;
 
 export const Separator = styled.View`

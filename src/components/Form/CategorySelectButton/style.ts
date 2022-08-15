@@ -1,6 +1,10 @@
 import { TouchableOpacity } from "react-native";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
-import styled from "styled-components/native";
+import styled, { css } from "styled-components/native";
+
+interface TitleProps {
+    active: boolean;
+}
 
 export const ButtonContainer = styled(TouchableOpacity)`
     width: 100%;
@@ -13,8 +17,13 @@ export const ButtonContainer = styled(TouchableOpacity)`
     border-radius: ${({ theme }) => RFValue(theme.common.radius)}px;
 `;
 
-export const Title = styled.Text`
-    font-size: ${({ theme }) => RFValue(theme.fonts.secondary)}px;
-    font-family: ${({ theme }) => theme.fonts.family.bold};
-    color: ${({ theme }) => theme.colors.text};
+export const Title = styled.Text<TitleProps>`
+    color: ${({ theme, active }) =>
+        active ? theme.colors.text_dark : theme.colors.text};
+    font-size: ${({ theme, active }) =>
+        active
+            ? `${RFValue(theme.fonts.primary)}}px}`
+            : `${RFValue(theme.fonts.secondary)}}px}`};
+    font-family: ${({ theme, active }) =>
+        active ? theme.fonts.family.bold : theme.fonts.family.regular};
 `;

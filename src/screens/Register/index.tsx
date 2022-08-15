@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Modal, TouchableWithoutFeedback, Keyboard, Alert } from "react-native";
 import Button from "../../components/Form/Button";
-import Input from "../../components/Form/Input";
-import TransactionTypeButton from "../../components/Form/TransactionTypeButton";
 import CategorySelect from "../CategorySelect";
 import CategorySelectButton from "../../components/Form/CategorySelectButton";
 import Header from "../../components/Header";
@@ -12,6 +10,8 @@ import {
     Forms,
     TypeButtonContainer,
 } from "./style";
+import TransactionTypeRegister from "./TransactionTypeRegister";
+import TransactionInputRegister from "./TransactionInputRegister";
 
 export default function Register() {
     const [iconType, setIconType] = useState<"up" | "down" | "">("");
@@ -41,22 +41,28 @@ export default function Register() {
     }
 
     function handleRegister() {
+        if (validRegister()) {
+            console.log({
+                iconType,
+                itemActive,
+                nameInput,
+                amountInput,
+            });
+        }
+    }
+
+    function validRegister() {
         if (!iconType) {
             Alert.alert("Seleciona o tipo de transação");
-            return;
+            return false;
         }
 
         if (!itemActive) {
             Alert.alert("Selecione uma categoria");
-            return;
+            return false;
         }
 
-        console.log({
-            iconType,
-            itemActive,
-            nameInput,
-            amountInput,
-        });
+        return true;
     }
     return (
         <>
@@ -65,29 +71,14 @@ export default function Register() {
                 <Container>
                     <Forms>
                         <FieldsContainer>
-                            <Input
-                                placeholder="Nome"
-                                autoCapitalize="sentences"
-                                autoCorrect={false}
-                                onChangeText={setNameInput}
-                            />
-                            <Input
-                                placeholder="Preço"
-                                keyboardType="numeric"
-                                onChangeText={setAmountInput}
+                            <TransactionInputRegister
+                                amountInput={setAmountInput}
+                                nameInput={setNameInput}
                             />
                             <TypeButtonContainer>
-                                <TransactionTypeButton
-                                    title="Income"
-                                    type="up"
+                                <TransactionTypeRegister
+                                    handleTypeButton={handleTypeButton}
                                     iconType={iconType}
-                                    onPress={() => handleTypeButton("up")}
-                                />
-                                <TransactionTypeButton
-                                    title="Outcome"
-                                    type="down"
-                                    iconType={iconType}
-                                    onPress={() => handleTypeButton("down")}
                                 />
                             </TypeButtonContainer>
                             <CategorySelectButton
@@ -97,6 +88,7 @@ export default function Register() {
                                         : "Escolha uma Categoria"
                                 }
                                 onPress={handleModalOpen}
+                                active={itemActive ? true : false}
                             />
                         </FieldsContainer>
                         <Button title="Enviar" onPress={handleRegister} />

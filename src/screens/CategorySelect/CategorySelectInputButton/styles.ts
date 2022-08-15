@@ -18,9 +18,8 @@ export const CategoriesContainer = styled(
     TouchableOpacity
 )<CategoryButtonProps>`
     ${alignRow}
-    padding: ${({ theme }) => RFValue(theme.common.padding / 2)}px ${({
-        theme,
-    }) => RFValue(theme.common.padding)}px;
+    padding: ${({ theme }) => RFValue(theme.common.padding)}px ${({ theme }) =>
+        RFValue(theme.common.padding)}px;
     background-color: ${({ isActive, color, theme }) =>
         isActive ? color : theme.colors.shape};
 `;

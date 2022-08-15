@@ -31,13 +31,13 @@ export const Photo = styled.Image`
 export const WelcomeContainer = styled.View``;
 
 export const UserWelcome = styled.Text`
-    font-family: ${({ theme }) => theme.fonts.regular};
+    font-family: ${({ theme }) => theme.fonts.family.regular};
     font-size: ${({ theme }) => RFValue(theme.fonts.primary)}px;
     color: ${({ theme }) => theme.colors.shape};
 `;
 
 export const UserName = styled.Text`
-    font-family: ${({ theme }) => theme.fonts.bold};
+    font-family: ${({ theme }) => theme.fonts.family.bold};
     font-size: ${({ theme }) => RFValue(theme.fonts.primary)}px;
     color: ${({ theme }) => theme.colors.shape};
 `;

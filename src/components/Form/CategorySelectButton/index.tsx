@@ -4,12 +4,13 @@ import { ButtonContainer, Title } from "./style";
 
 interface ButtonProps extends TouchableOpacityProps {
     title: string;
+    active?: boolean;
 }
 
-export default function Button({ title, ...all }: ButtonProps) {
+export default function Button({ title, active = false, ...all }: ButtonProps) {
     return (
         <ButtonContainer {...all}>
-            <Title>{title}</Title>
+            <Title active={active}>{title}</Title>
         </ButtonContainer>
     );
 }
