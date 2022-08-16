@@ -16,7 +16,6 @@ export default function Transaction({ data }: TransactionsProps) {
         <Container>
             <Title>{data.title}</Title>
             <Amount color={data.type}>
-                R$
                 {data.type === "outcome" ? " - " : " "}
                 {data.amount}
             </Amount>

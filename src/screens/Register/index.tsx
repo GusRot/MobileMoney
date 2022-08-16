@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Modal, TouchableWithoutFeedback, Keyboard, Alert } from "react-native";
 import Button from "../../components/Form/Button";
 import CategorySelect from "../CategorySelect";
+import uuid from "react-native-uuid";
 import CategorySelectButton from "../../components/Form/CategorySelectButton";
 import Header from "../../components/Header";
 import {
@@ -12,20 +13,22 @@ import {
 } from "./style";
 import TransactionTypeRegister from "./TransactionTypeRegister";
 import TransactionInputRegister from "./TransactionInputRegister";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { DataTransactionSaveProps } from "../Home/Dashboard/Interface";
 
 export default function Register() {
     const [iconType, setIconType] = useState<"up" | "down" | "">("");
     const [modal, setModal] = useState(false);
-    const [itemActive, setItemActive] = useState("");
+    const [categoryActive, setCategoryActive] = useState("");
     const [nameInput, setNameInput] = useState("");
     const [amountInput, setAmountInput] = useState("");
 
     function handleCategoryActive(category: string) {
-        if (itemActive === category) {
-            setItemActive("");
+        if (categoryActive === category) {
+            setCategoryActive("");
             return;
         }
-        setItemActive(category);
+        setCategoryActive(category);
     }
 
     function handleModalOpen() {
@@ -40,14 +43,34 @@ export default function Register() {
         setIconType(type);
     }
 
-    function handleRegister() {
+    async function handleRegister() {
         if (validRegister()) {
-            console.log({
-                iconType,
-                itemActive,
-                nameInput,
-                amountInput,
-            });
+            const data: DataTransactionSaveProps = {
+                id: String(uuid.v4()),
+                type: iconType === "up" ? "income" : "outcome",
+                category: categoryActive,
+                title: nameInput,
+                amount: parseFloat(amountInput),
+                date: String(new Date()),
+            };
+            console.log(data);
+
+            try {
+                const dataKey = "@mobilemoney:transactions";
+                const response = await AsyncStorage.getItem(dataKey);
+                const transactions = response ? JSON.parse(response) : [];
+                await AsyncStorage.setItem(
+                    dataKey,
+                    JSON.stringify([data, ...transactions])
+                );
+
+                resetValues();
+            } catch (error) {
+                console.log(error);
+                Alert.alert(
+                    "não foi possível salvar os dados, tente novamente"
+                );
+            }
         }
     }
 
@@ -57,15 +80,23 @@ export default function Register() {
             return false;
         }
 
-        if (!itemActive) {
+        if (!categoryActive) {
             Alert.alert("Selecione uma categoria");
             return false;
         }
 
         return true;
     }
+
+    function resetValues() {
+        setAmountInput("");
+        setNameInput("");
+        setCategoryActive("");
+        setIconType("");
+    }
     return (
         <>
+            {console.log(categoryActive)}
             <Header title="Forms" />
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <Container>
@@ -73,6 +104,8 @@ export default function Register() {
                         <FieldsContainer>
                             <TransactionInputRegister
                                 amountInput={setAmountInput}
+                                amount={amountInput}
+                                name={nameInput}
                                 nameInput={setNameInput}
                             />
                             <TypeButtonContainer>
@@ -83,12 +116,12 @@ export default function Register() {
                             </TypeButtonContainer>
                             <CategorySelectButton
                                 title={
-                                    itemActive
-                                        ? itemActive
+                                    categoryActive
+                                        ? categoryActive
                                         : "Escolha uma Categoria"
                                 }
                                 onPress={handleModalOpen}
-                                active={itemActive ? true : false}
+                                active={categoryActive ? true : false}
                             />
                         </FieldsContainer>
                         <Button title="Enviar" onPress={handleRegister} />
@@ -99,7 +132,7 @@ export default function Register() {
             <Modal visible={modal}>
                 <CategorySelect
                     modal={handleModalOpen}
-                    isActive={itemActive}
+                    isActive={categoryActive}
                     handleCategoryActive={handleCategoryActive}
                 />
             </Modal>

@@ -15,6 +15,11 @@ export interface DataTransactionProps extends TransactionProps {
     id: string;
 }
 
+export interface DataTransactionSaveProps
+    extends Omit<DataTransactionProps, "category"> {
+    category: string;
+}
+
 export interface TransactionsProps {
     data: DataTransactionProps;
 }

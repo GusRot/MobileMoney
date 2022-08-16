@@ -1,5 +1,11 @@
-import React from "react";
-import { DataTransactionProps } from "./Interface";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import React, { useEffect, useState } from "react";
+import { Alert } from "react-native";
+import {
+    categories,
+    categoriesIcons,
+} from "../../../components/utils/categories";
+import { DataTransactionProps, DataTransactionSaveProps } from "./Interface";
 import { Container, Title, TransactionList } from "./styles";
 import Transaction from "./Transaction";
 
@@ -31,12 +37,58 @@ export default function Dashboard() {
         },
     ];
 
+    const [transactionsData, setTransactionsData] = useState<
+        DataTransactionProps[]
+    >([]);
+
+    useEffect(() => {
+        loadTransaction();
+    }, []);
+
+    async function loadTransaction() {
+        try {
+            const dataKey = "@mobilemoney:transactions";
+            const response = await AsyncStorage.getItem(dataKey);
+            const transactions = response ? JSON.parse(response) : [];
+
+            const transactionsFormatted: DataTransactionProps[] =
+                transactions.map((item: DataTransactionSaveProps) => {
+                    const amount = item.amount.toLocaleString("pt-BR", {
+                        style: "currency",
+                        currency: "BRL",
+                    });
+                    const date = Intl.DateTimeFormat("pt-BR", {
+                        day: "2-digit",
+                        month: "2-digit",
+                        year: "2-digit",
+                    }).format(new Date(item.date));
+                    const icon = categoriesIcons[item.category];
+
+                    return {
+                        id: item.id,
+                        title: item.title,
+                        type: item.type,
+                        amount,
+                        category: {
+                            name: item.category,
+                            icon,
+                        },
+                        date,
+                    };
+                });
+            setTransactionsData([...transactionsFormatted]);
+        } catch (error) {
+            console.log(error);
+            Alert.alert("não foi possível carregar os dados, tente novamente");
+        }
+    }
+
     return (
         <Container>
             <Title>Listagem</Title>
 
             <TransactionList
-                data={data}
+                data={transactionsData}
                 keyExtractor={(item) => item.id}
                 renderItem={({ item }) => <Transaction data={item} />}
             />
