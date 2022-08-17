@@ -45,12 +45,16 @@ export default function Register() {
 
     async function handleRegister() {
         if (validRegister()) {
+            const amount = parseFloat(
+                amountInput.replace(",", ".").replace(/[^0-9.]/g, "")
+            );
+            const type = iconType === "up" ? "income" : "outcome";
             const data: DataTransactionSaveProps = {
                 id: String(uuid.v4()),
-                type: iconType === "up" ? "income" : "outcome",
+                type,
                 category: categoryActive,
                 title: nameInput,
-                amount: parseFloat(amountInput),
+                amount,
                 date: String(new Date()),
             };
 
@@ -64,6 +68,14 @@ export default function Register() {
                 );
 
                 resetValues();
+                Alert.alert(
+                    `Registrado ${
+                        iconType === "up" ? "entrada" : "saída"
+                    } de R$ ${String(amount).replace(
+                        ".",
+                        ","
+                    )} em ${categoryActive} (${nameInput}) `
+                );
             } catch (error) {
                 Alert.alert(
                     "não foi possível salvar os dados, tente novamente"

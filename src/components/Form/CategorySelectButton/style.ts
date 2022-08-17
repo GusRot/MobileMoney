@@ -22,8 +22,8 @@ export const Title = styled.Text<TitleProps>`
         active ? theme.colors.text_dark : theme.colors.text};
     font-size: ${({ theme, active }) =>
         active
-            ? `${RFValue(theme.fonts.primary)}}px}`
-            : `${RFValue(theme.fonts.secondary)}}px}`};
+            ? `${RFValue(theme.fonts.secondary + 1)}px`
+            : `${RFValue(theme.fonts.secondary)}px`};
     font-family: ${({ theme, active }) =>
-        active ? theme.fonts.family.bold : theme.fonts.family.regular};
+        active ? theme.fonts.family.medium : theme.fonts.family.regular};
 `;

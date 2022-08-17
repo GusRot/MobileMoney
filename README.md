@@ -28,6 +28,7 @@ Acesse a versão Desktop através [deste repositório](https://github.com/GusRot
 
 ## Build
 Você pode baixar no seu celular o apk disponível na [nuvem] ()
+
 ## Video Preview (Youtube)
 
 

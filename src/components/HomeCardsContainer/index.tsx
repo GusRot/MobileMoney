@@ -9,7 +9,7 @@ interface HomeCardsContainerProps {
 
 interface HomeCardsTransactions {
     title: string;
-    amount: number;
+    amount: string;
     date: string;
     type: "up" | "down" | "total";
 }
@@ -55,7 +55,10 @@ export default function HomeCardsContainer({
                               year: "2-digit",
                           }).format(new Date(incomeTransactionDate))
                         : "nenhuma transação",
-                    amount: incomeTransactionAmount,
+                    amount: incomeTransactionAmount.toLocaleString("pt-BR", {
+                        style: "currency",
+                        currency: "BRL",
+                    }),
                     title: "entrada",
                     type: "up",
                 },
@@ -67,7 +70,10 @@ export default function HomeCardsContainer({
                               year: "2-digit",
                           }).format(new Date(outcomeTransactionDate))
                         : "nenhuma transação",
-                    amount: outcomeTransactionAmount,
+                    amount: outcomeTransactionAmount.toLocaleString("pt-BR", {
+                        style: "currency",
+                        currency: "BRL",
+                    }),
                     title: "saida",
                     type: "down",
                 },
@@ -79,7 +85,12 @@ export default function HomeCardsContainer({
                               year: "2-digit",
                           }).format(new Date(finalDate))
                         : "nenhuma transação",
-                    amount: incomeTransactionAmount - outcomeTransactionAmount,
+                    amount: (
+                        incomeTransactionAmount - outcomeTransactionAmount
+                    ).toLocaleString("pt-BR", {
+                        style: "currency",
+                        currency: "BRL",
+                    }),
                     title: "total",
                     type: "total",
                 },

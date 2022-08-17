@@ -10,7 +10,7 @@ import {
 
 interface CardsProps {
     title: string;
-    amount: number;
+    amount: string;
     date: string;
     type: "up" | "down" | "total";
 }
@@ -27,8 +27,8 @@ export default function HomeCards({ title, amount, date, type }: CardsProps) {
                 <CardTitle type={type}>{title}</CardTitle>
                 <CardIcon name={iconType[type]} type={type} />
             </CardHeader>
-            <CardValue type={type}>R$ {amount}</CardValue>
-            <CardDate type={type}>last transaction: {date}</CardDate>
+            <CardValue type={type}>{amount}</CardValue>
+            <CardDate type={type}>Ultima transação: {date}</CardDate>
         </Container>
     );
 }

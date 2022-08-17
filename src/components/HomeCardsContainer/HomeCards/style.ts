@@ -13,12 +13,12 @@ export const Container = styled.View<Typeprops>`
     background-color: ${({ theme }) => theme.colors.shape};
     border-radius: ${({ theme }) => RFValue(theme.common.radius_secondary)}px;
     margin-right: ${({ theme }) => RFValue(theme.common.gap)}px;
+    height: ${RFPercentage(20)}px;
 
     ${({ type, theme }) =>
         type === "total"
             ? `background-color: ${theme.colors.secondary};`
             : `background-color: ${theme.colors.shape};`};
-
 `;
 
 export const CardHeader = styled.View`

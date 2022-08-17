@@ -6,7 +6,9 @@ import { alignRow, padding } from "../../global/styles/theme";
 export const Container = styled.View`
     background-color: ${({ theme }) => theme.colors.primary};
     align-items: flex-start;
-    height: ${RFPercentage(42)}px;
+    height: ${RFPercentage(35)}px;
+    z-index: 2;
+    margin-bottom: ${RFPercentage(2.5)}px;
 `;
 
 export const Header = styled.View`

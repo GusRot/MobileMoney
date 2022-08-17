@@ -60,7 +60,7 @@ export const ButtonIcon = styled(Feather)<Typeprops>`
 `;
 
 export const Title = styled.Text`
-    font-size: ${({ theme }) => RFValue(theme.fonts.primary)}px;
+    font-size: ${({ theme }) => RFValue(theme.fonts.secondary)}px;
     font-family: ${({ theme }) => theme.fonts.family.regular};
     color: ${({ theme }) => theme.colors.text_dark};
 `;
