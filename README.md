@@ -1,5 +1,4 @@
-# Em desenvolvimento
-<!-- ###  Version README [English](./README-en.md) 
+###  Version README [English](./README-en.md) 
 <div style="display: flex; gap:1rem;">
 <a href="#">
 <img alt="Repository size" src="https://img.shields.io/github/repo-size/GusRot/MobileMoney">
@@ -20,25 +19,24 @@
 
 ## 📝 O Projeto
 Controle suas finanças através desse aplicativo, adicione seu fluxo de caixa com entradas e saídas e tenha facilmente, com uma interface amigável, a visão de tudo.
-Apesar de ser um projeto simples, ele pode trazer diversos benefícios para a sua saúde financeira. Todos sabemos da importância da organização financeira, mas poucos realmente fazem.
+Apesar de ser um projeto simples, ele pode trazer diversos benefícios para a sua saúde financeira. Todos sabemos da importância da organização financeira, mas poucos realmente fazem. 
+Acesse a versão Desktop através [deste repositório](https://github.com/GusRot/DTMoney)
 
-### Desenvolvimento:
+### Algumas bibliotecas utilizadas
 
-
-### Outras bibliotecas utilizadas
-
+- `react-navigation-bottom-tabs` `styled-components` `async-storage` `expo-app-loading`
 
 ## Build
-
-
+Você pode baixar no seu celular o apk disponível na [nuvem] ()
 ## Video Preview (Youtube)
 
 
+Você também pode rodar na sua máquina, em seu emulador:
 
-Você também pode rodar na sua máquina:
 ## Getting Started with 
 
+This project was bootstrapped with [EXPO] (https://docs.expo.dev/get-started/create-a-new-app/)
 
 ## Available Scripts you can run
 
- -->
+`yarn install` `expo start` `expo build:android` `yarn android`

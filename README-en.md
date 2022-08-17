@@ -1,5 +1,4 @@
-# In development
-<!-- ###  Version README [English](./README-en.md) 
+###  Version README [Portuguese](./README.md) 
 <div style="display: flex; gap:1rem;">
 <a href="#">
 <img alt="Repository size" src="https://img.shields.io/github/repo-size/GusRot/MobileMoney">
@@ -18,28 +17,25 @@
 </a>
 </div>
 
+## 📝 Project
+Control your finances through this application, add your cash flow and easily have a view of everything with a friendly interface. Despite being a simple project, it can bring several benefits to your financial health. We all know the importance of financial organization, but few actually do it.
+Access the Desktop version through [this repository](https://github.com/GusRot/DTMoney)
 
-## 📝 O Projeto
+### Some Libraries
 
-
-### Desenvolvimento:
-
-
-### Outras bibliotecas utilizadas
-
+- `react-navigation-bottom-tabs` `styled-components` `async-storage` `expo-app-loading`
 
 ## Build
-
-
+You can download the apk available at [cloud] ()
 ## Video Preview (Youtube)
 
 
+You can also run in your virtual machine emulator:
 
-Você também pode rodar na sua máquina:
 ## Getting Started with 
 
+This project was bootstrapped with [EXPO] (https://docs.expo.dev/get-started/create-a-new-app/)
 
-## Available Scripts you can run -->
+## Available Scripts you can run
 
-
-
+`yarn install` `expo start` `expo build:android` `yarn android`
