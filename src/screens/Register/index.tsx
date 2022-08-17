@@ -53,7 +53,6 @@ export default function Register() {
                 amount: parseFloat(amountInput),
                 date: String(new Date()),
             };
-            console.log(data);
 
             try {
                 const dataKey = "@mobilemoney:transactions";
@@ -66,7 +65,6 @@ export default function Register() {
 
                 resetValues();
             } catch (error) {
-                console.log(error);
                 Alert.alert(
                     "não foi possível salvar os dados, tente novamente"
                 );
@@ -96,7 +94,6 @@ export default function Register() {
     }
     return (
         <>
-            {console.log(categoryActive)}
             <Header title="Forms" />
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <Container>

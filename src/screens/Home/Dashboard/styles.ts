@@ -1,10 +1,9 @@
 import styled from "styled-components/native";
 import { RFValue } from "react-native-responsive-fontsize";
 import { FlatList, FlatListProps } from "react-native";
-import { DataTransactionProps } from "./Interface";
+import { DataTransactionDashboard } from "./Interface";
 
-export const Container = styled.View`
-`;
+export const Container = styled.View``;
 
 export const Title = styled.Text`
     text-transform: uppercase;
@@ -15,8 +14,8 @@ export const Title = styled.Text`
 
 export const TransactionList = styled(
     FlatList as new (
-        props: FlatListProps<DataTransactionProps>
-    ) => FlatList<DataTransactionProps>
+        props: FlatListProps<DataTransactionDashboard>
+    ) => FlatList<DataTransactionDashboard>
 ).attrs({
     showsVerticalScrollIndicator: false,
 })`

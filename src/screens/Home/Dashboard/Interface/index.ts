@@ -11,8 +11,13 @@ interface TransactionProps {
     type: "income" | "outcome";
 }
 
-export interface DataTransactionProps extends TransactionProps {
+interface DataTransactionProps extends TransactionProps {
     id: string;
+}
+
+export interface DataTransactionDashboard
+    extends Omit<DataTransactionProps, "amount"> {
+    amount: string;
 }
 
 export interface DataTransactionSaveProps
@@ -20,6 +25,17 @@ export interface DataTransactionSaveProps
     category: string;
 }
 
+export interface DataTransactionSave
+    extends Omit<DataTransactionProps, "category"> {
+    category:
+        | "Compras"
+        | "Alimentação"
+        | "Salário"
+        | "Carro"
+        | "Lazer"
+        | "Estudos";
+}
+
 export interface TransactionsProps {
-    data: DataTransactionProps;
+    data: DataTransactionDashboard;
 }
