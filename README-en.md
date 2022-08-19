@@ -26,10 +26,9 @@ Access the Desktop version through [this repository](https://github.com/GusRot/D
 - `react-navigation-bottom-tabs` `styled-components` `async-storage` `expo-app-loading`
 
 ## Build
-You can download the apk available at [cloud] ()
+You can download the apk available at (https://expo.dev/accounts/gusrot/projects/mobilemoney)
 
 ## Video Preview (Youtube)
-
 
 You can also run in your virtual machine emulator:
 

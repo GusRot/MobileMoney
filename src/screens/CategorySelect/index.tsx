@@ -24,7 +24,7 @@ export default function CategorySelect({
 }: CategorySelectProps) {
     return (
         <>
-            <Header title="Category" />
+            <Header title="Escolha a Categoria" />
             <Container>
                 <CategorySelectContainer>
                     <CategoriesList

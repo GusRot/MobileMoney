@@ -95,6 +95,11 @@ export default function Register() {
             return false;
         }
 
+        if (categoryActive === "Salário") {
+            Alert.alert("Salário nao pode ser uma transação de saída");
+            return false;
+        }
+
         return true;
     }
 
@@ -106,7 +111,7 @@ export default function Register() {
     }
     return (
         <>
-            <Header title="Forms" />
+            <Header title="Cadastre sua transação" />
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <Container>
                     <Forms>
