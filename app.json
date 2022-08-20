@@ -3,12 +3,16 @@
     "name": "mobilemoney",
     "slug": "mobilemoney",
     "version": "1.0.0",
+    "orientation": "portrait",
     "assetBundlePatterns": [
       "**/*"
     ],
     "android": {
       "package": "Mobilemoney.GusRot",
       "versionCode": 1
+    },
+    "androidStatusBar": {
+      "backgroundColor": "#5636D3"
     }
   }
 }

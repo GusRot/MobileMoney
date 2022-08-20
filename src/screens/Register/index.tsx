@@ -44,10 +44,10 @@ export default function Register() {
     }
 
     async function handleRegister() {
-        if (validRegister()) {
-            const amount = parseFloat(
-                amountInput.replace(",", ".").replace(/[^0-9.]/g, "")
-            );
+        const amount = parseFloat(
+            amountInput.replace(",", ".").replace(/[^0-9.]/g, "")
+        );
+        if (validRegister(amount)) {
             const type = iconType === "up" ? "income" : "outcome";
             const data: DataTransactionSaveProps = {
                 id: String(uuid.v4()),
@@ -84,9 +84,19 @@ export default function Register() {
         }
     }
 
-    function validRegister() {
+    function validRegister(amount: number) {
         if (!iconType) {
-            Alert.alert("Seleciona o tipo de transação");
+            Alert.alert("Selecione o tipo de transação");
+            return false;
+        }
+
+        if (!nameInput || nameInput.length < 2) {
+            Alert.alert("Deve ter no mínimo 2 caracteres");
+            return false;
+        }
+
+        if (!amount) {
+            Alert.alert("Digite um valor válido");
             return false;
         }
 

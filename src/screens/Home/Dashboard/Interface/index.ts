@@ -3,6 +3,14 @@ interface CategoryProps {
     icon: string;
 }
 
+type CategoryOptions =
+    | "Compras"
+    | "Alimentação"
+    | "Salário"
+    | "Carro"
+    | "Lazer"
+    | "Estudos";
+
 interface TransactionProps {
     title: string;
     amount: number;
@@ -27,13 +35,7 @@ export interface DataTransactionSaveProps
 
 export interface DataTransactionSave
     extends Omit<DataTransactionProps, "category"> {
-    category:
-        | "Compras"
-        | "Alimentação"
-        | "Salário"
-        | "Carro"
-        | "Lazer"
-        | "Estudos";
+    category: CategoryOptions;
 }
 
 export interface TransactionsProps {
