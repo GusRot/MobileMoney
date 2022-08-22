@@ -14,13 +14,13 @@ export default function transactionTypeRegister({
     return (
         <>
             <TransactionTypeButton
-                title="Income"
+                title="Entrada"
                 type="up"
                 iconType={iconType}
                 onPress={() => handleTypeButton("up")}
             />
             <TransactionTypeButton
-                title="Outcome"
+                title="Saida"
                 type="down"
                 iconType={iconType}
                 onPress={() => handleTypeButton("down")}

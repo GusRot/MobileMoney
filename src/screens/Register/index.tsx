@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal, TouchableWithoutFeedback, Keyboard, Alert } from "react-native";
 import Button from "../../components/Form/Button";
 import CategorySelect from "../CategorySelect";
@@ -22,6 +22,7 @@ export default function Register() {
     const [categoryActive, setCategoryActive] = useState("");
     const [nameInput, setNameInput] = useState("");
     const [amountInput, setAmountInput] = useState("");
+    const [enableButton, setEnableButton] = useState(false);
 
     function handleCategoryActive(category: string) {
         if (categoryActive === category) {
@@ -43,11 +44,13 @@ export default function Register() {
         setIconType(type);
     }
 
+    function formatAmount(amount: string) {
+        return parseFloat(amount.replace(",", ".").replace(/[^0-9.]/g, ""));
+    }
+
     async function handleRegister() {
-        const amount = parseFloat(
-            amountInput.replace(",", ".").replace(/[^0-9.]/g, "")
-        );
-        if (validRegister(amount)) {
+        const amount = formatAmount(amountInput);
+        if (validRegister(true)) {
             const type = iconType === "up" ? "income" : "outcome";
             const data: DataTransactionSaveProps = {
                 id: String(uuid.v4()),
@@ -84,33 +87,49 @@ export default function Register() {
         }
     }
 
-    function validRegister(amount: number) {
+    function validRegister(submit: boolean) {
+        const amount = formatAmount(amountInput);
+
         if (!iconType) {
-            Alert.alert("Selecione o tipo de transação");
+            if (submit) {
+                Alert.alert("Selecione o tipo de transação");
+            }
             return false;
         }
 
         if (!nameInput || nameInput.length < 2) {
-            Alert.alert("Deve ter no mínimo 2 caracteres");
+            if (submit) {
+                Alert.alert("Nome deve ter no mínimo 2 caracteres");
+            }
             return false;
         }
 
         if (!amount) {
-            Alert.alert("Digite um valor válido");
+            if (submit) {
+                Alert.alert("Digite um valor válido");
+            }
             return false;
         }
 
         if (!categoryActive) {
-            Alert.alert("Selecione uma categoria");
+            if (submit) {
+                Alert.alert("Selecione uma categoria");
+            }
             return false;
         }
 
-        if (categoryActive === "Salário") {
-            Alert.alert("Salário nao pode ser uma transação de saída");
+        if (categoryActive === "Salário" && iconType === "down") {
+            if (submit) {
+                Alert.alert("Salário nao pode ser uma transação de saída");
+            }
             return false;
         }
 
         return true;
+    }
+
+    function handleEnableButton() {
+        setEnableButton(validRegister(false));
     }
 
     function resetValues() {
@@ -119,6 +138,11 @@ export default function Register() {
         setCategoryActive("");
         setIconType("");
     }
+
+    useEffect(() => {
+        handleEnableButton();
+    }, [iconType, categoryActive, nameInput, amountInput]);
+
     return (
         <>
             <Header title="Cadastre sua transação" />
@@ -148,7 +172,11 @@ export default function Register() {
                                 active={categoryActive ? true : false}
                             />
                         </FieldsContainer>
-                        <Button title="Enviar" onPress={handleRegister} />
+                        <Button
+                            title="Enviar"
+                            onPress={handleRegister}
+                            enabled={enableButton}
+                        />
                     </Forms>
                 </Container>
             </TouchableWithoutFeedback>

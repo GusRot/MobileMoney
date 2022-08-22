@@ -1,6 +1,16 @@
 import React from "react";
 import { InputContainer } from "./style";
+import { TextInputProps } from "react-native";
 
-export default function Input({... all}) {
-    return <InputContainer {...all} />;
+interface InputStyleProps extends TextInputProps {
+    focus?: boolean;
+    filled?: boolean;
+}
+
+export default function Input({
+    focus = false,
+    filled = false,
+    ...all
+}: InputStyleProps) {
+    return <InputContainer focus={focus} filled={filled} {...all} />;
 }

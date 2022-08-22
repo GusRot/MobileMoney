@@ -2,10 +2,15 @@ import { TouchableOpacity } from "react-native";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
 
-export const ButtonContainer = styled(TouchableOpacity)`
+interface ButtonContainerprops {
+    enabled: boolean;
+}
+
+export const ButtonContainer = styled(TouchableOpacity)<ButtonContainerprops>`
     width: 100%;
     height: ${RFPercentage(8)}px;
-    background-color: ${({ theme }) => theme.colors.secondary};
+    background-color: ${({ theme, enabled }) =>
+        enabled ? theme.colors.secondary : theme.colors.secondary_light};
     margin: ${({ theme }) => RFValue(theme.common.padding / 4)}px 0;
     padding: ${({ theme }) => RFValue(theme.common.padding / 2)}px
         ${({ theme }) => RFValue(theme.common.padding)}px;

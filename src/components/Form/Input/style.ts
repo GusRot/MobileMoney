@@ -1,8 +1,13 @@
 import { TextInput } from "react-native";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
-import styled from "styled-components/native";
+import styled, { css } from "styled-components/native";
 
-export const InputContainer = styled(TextInput)`
+interface InputContainerProps {
+    focus: boolean;
+    filled: boolean;
+}
+
+export const InputContainer = styled(TextInput)<InputContainerProps>`
     width: 100%;
     height: ${RFPercentage(8)}px;
     background-color: ${({ theme }) => theme.colors.shape};
@@ -13,4 +18,17 @@ export const InputContainer = styled(TextInput)`
     font-size: ${({ theme }) => RFValue(theme.fonts.secondary)}px;
     font-family: ${({ theme }) => theme.fonts.family.regular};
     border-radius: ${({ theme }) => RFValue(theme.common.radius)}px;
+    border: 1px solid transparent;
+
+    ${({ filled }) =>
+        filled &&
+        css`
+            border-color: ${({ theme }) => theme.colors.success_light};
+        `};
+
+    ${({ focus }) =>
+        focus &&
+        css`
+            border-color: ${({ theme }) => theme.colors.primary};
+        `};
 `;
