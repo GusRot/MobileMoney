@@ -21,6 +21,10 @@ export default function HomeCards({ title, amount, date, type }: CardsProps) {
         down: "arrow-down-circle",
         total: "dollar-sign",
     };
+    const displayDate =
+        date !== "nenhuma transação"
+            ? `Ultima transação: ${date}`
+            : date[0].toUpperCase() + date.substr(1);
     return (
         <Container type={type}>
             <CardHeader>
@@ -28,7 +32,7 @@ export default function HomeCards({ title, amount, date, type }: CardsProps) {
                 <CardIcon name={iconType[type]} type={type} />
             </CardHeader>
             <CardValue type={type}>{amount}</CardValue>
-            <CardDate type={type}>Ultima transação: {date}</CardDate>
+            <CardDate type={type}>{displayDate}</CardDate>
         </Container>
     );
 }

@@ -2,6 +2,7 @@ import { FlatList, FlatListProps } from "react-native";
 import styled from "styled-components/native";
 import { CategoriesProps } from "../../components/utils/categories";
 import { RFValue } from "react-native-responsive-fontsize";
+import { padding } from "../../global/styles/theme";
 
 export const Container = styled.View`
     flex: 1;
@@ -29,5 +30,5 @@ export const Separator = styled.View`
 `;
 
 export const ButtonContainer = styled.View`
-    padding: ${({ theme }) => RFValue(theme.common.padding)}px;
+    ${padding}
 `;

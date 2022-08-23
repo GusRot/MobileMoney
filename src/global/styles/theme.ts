@@ -32,7 +32,7 @@ export const theme = {
             regular: "Poppins_400Regular",
             medium: "Poppins_500Medium",
             bold: "Poppins_700Bold",
-        }
+        },
     },
     common: {
         padding: 20,
@@ -47,17 +47,6 @@ export const theme = {
 export const alignRow = css`
     flex-direction: row;
     align-items: center;
-`;
-
-export const justifyRow = css`
-    flex-direction: row;
-    align-items: center;
-`;
-
-export const centerRow = css`
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
 `;
 
 export const centerColumn = css`

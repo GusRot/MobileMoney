@@ -13,10 +13,10 @@ export const Container = styled.View`
 
 export const Header = styled.View`
     ${padding}
+    ${alignRow}
+    justify-content: space-between;
     width: 100%;
     margin-top: ${({ theme }) => RFValue(theme.common.padding * 2)}px;
-    justify-content: space-between;
-    ${alignRow}
 `;
 
 export const ProfileContainer = styled.View`

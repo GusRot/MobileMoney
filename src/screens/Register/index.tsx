@@ -145,9 +145,9 @@ export default function Register() {
 
     return (
         <>
-            <Header title="Cadastre sua transação" />
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <Container>
+                    <Header title="Cadastre sua transação" />
                     <Forms>
                         <FieldsContainer>
                             <TransactionInputRegister

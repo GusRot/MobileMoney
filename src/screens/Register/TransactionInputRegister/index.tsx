@@ -28,13 +28,13 @@ export default function transactionInputRegister({
         }
     }
 
-    function handleOnBlur(value: string) {
+    function handleOnBlur(name: string, value: string) {
         setOnFocusName(false);
         setOnFocusAmount(false);
-        if (value === "name") {
+        if (name === "name") {
             setFilledName(!!value);
         }
-        if (value === "amount") {
+        if (name === "amount") {
             setFilledAmount(!!value);
         }
     }
@@ -47,7 +47,7 @@ export default function transactionInputRegister({
                 autoCorrect={false}
                 onChangeText={nameInput}
                 value={name}
-                onBlur={() => handleOnBlur("name")}
+                onBlur={() => handleOnBlur("name", name)}
                 onFocus={() => handleIsfocused("name")}
                 focus={onfocusName}
                 filled={filledName}
@@ -57,7 +57,7 @@ export default function transactionInputRegister({
                 keyboardType="numeric"
                 onChangeText={amountInput}
                 value={amount}
-                onBlur={() => handleOnBlur("amount")}
+                onBlur={() => handleOnBlur("amount", amount)}
                 onFocus={() => handleIsfocused("amount")}
                 focus={onfocusAmount}
                 filled={filledAmount}

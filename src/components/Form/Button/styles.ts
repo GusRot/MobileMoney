@@ -1,12 +1,14 @@
 import { TouchableOpacity } from "react-native";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
+import { centerColumn } from "../../../global/styles/theme";
 
 interface ButtonContainerprops {
     enabled: boolean;
 }
 
 export const ButtonContainer = styled(TouchableOpacity)<ButtonContainerprops>`
+    ${centerColumn}
     width: 100%;
     height: ${RFPercentage(8)}px;
     background-color: ${({ theme, enabled }) =>
@@ -14,8 +16,6 @@ export const ButtonContainer = styled(TouchableOpacity)<ButtonContainerprops>`
     margin: ${({ theme }) => RFValue(theme.common.padding / 4)}px 0;
     padding: ${({ theme }) => RFValue(theme.common.padding / 2)}px
         ${({ theme }) => RFValue(theme.common.padding)}px;
-    align-items: center;
-    justify-content: center;
     border-radius: ${({ theme }) => RFValue(theme.common.radius)}px;
 `;
 
